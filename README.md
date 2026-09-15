@@ -10,8 +10,6 @@
 
 ![HearInContext overview](assets/overview.png)
 
-[Download figure (PDF)](assets/overview.pdf)
-
 *Illustrative example: the same spoken request is disambiguated as flour or flower by different assistant histories. The dialogue and waveform are illustrative.*
 
 [Evaluation Protocol](docs/evaluation.md) · [Training & Decoding](qwen/README.md)
