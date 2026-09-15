@@ -8,6 +8,10 @@
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-HearInContext-FFD21E?style=flat)](https://huggingface.co/datasets/OPPOer/HearInContext)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue?style=flat)](LICENSE)
 
+![HearInContext overview](assets/overview.png)
+
+*示意：不同助手历史使同一句语音分别对应 flour 或 flower。对话与波形均为示意。*
+
 [评测协议](docs/evaluation.md) · [训练与解码](qwen/README.md)
 
 HearInContext 评测语音识别模型如何利用对话中的隐式语义线索，在固定音频的条件下区分上下文消歧与显式词语提示。

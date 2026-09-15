@@ -8,6 +8,10 @@
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-HearInContext-FFD21E?style=flat)](https://huggingface.co/datasets/OPPOer/HearInContext)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue?style=flat)](LICENSE)
 
+![HearInContext overview](assets/overview.png)
+
+*Illustrative example: the same spoken request is disambiguated as flour or flower by different assistant histories. The dialogue and waveform are illustrative.*
+
 [Evaluation Protocol](docs/evaluation.md) · [Training & Decoding](qwen/README.md)
 
 HearInContext evaluates how speech recognition models use implicit semantic cues from dialogue. Shared-audio comparisons distinguish contextual disambiguation from explicit word hints.
