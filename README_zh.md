@@ -10,6 +10,8 @@
 
 ![HearInContext overview](assets/overview.png)
 
+[下载主图（PDF）](assets/overview.pdf)
+
 *示意：不同助手历史使同一句语音分别对应 flour 或 flower。对话与波形均为示意。*
 
 [评测协议](docs/evaluation.md) · [训练与解码](qwen/README.md)
