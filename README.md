@@ -4,7 +4,10 @@
 
 ### A Benchmark for Implicit Context in Speech Recognition
 
-[🤗 Hugging Face Dataset](https://huggingface.co/datasets/OPPOer/HearInContext) · [Evaluation Protocol](docs/evaluation.md) · [Training & Decoding](qwen/README.md)
+[![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-HearInContext-FFD21E?style=flat)](https://huggingface.co/datasets/OPPOer/HearInContext)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue?style=flat)](LICENSE)
+
+[Evaluation Protocol](docs/evaluation.md) · [Training & Decoding](qwen/README.md)
 
 HearInContext evaluates how speech recognition models use implicit semantic cues from dialogue. Shared-audio comparisons distinguish contextual disambiguation from explicit word hints.
 
@@ -61,8 +64,8 @@ We provide code and data, but do not distribute fine-tuned weights.
 
 ## Further Usage
 
-- [Input format, normalization, and paired confidence intervals (Chinese)](docs/evaluation.md)
-- [Multi-entity scoring and AISHELL-1-NE (Chinese)](docs/entities.md)
+- [Input format, normalization, and paired confidence intervals](docs/evaluation.md)
+- [Multi-entity scoring and AISHELL-1-NE](docs/entities.md)
 
 Run tests:
 

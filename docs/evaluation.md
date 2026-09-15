@@ -1,63 +1,62 @@
-# 评测协议
+[English](evaluation.md) | [中文](evaluation_zh.md)
 
-以下命令均在代码仓库根目录执行。
+# Evaluation Protocol
 
-## 输入格式
+Run all commands from the repository root.
 
-两个输入文件均为 UTF-8 编码的 JSONL，每行一个JSON对象。
-各自的 `example_id` 必须唯一，两份文件的ID集合必须完全一致。
+## Input Format
 
-参考标注示例：
+Both inputs are UTF-8 JSONL files, with one JSON object per line.
+Each file must have unique `example_id` values, and their ID sets must match exactly.
+
+Reference example:
 
 ```json
 {"example_id":"demo::C1::voice1","language":"en","condition":"C1","reference_text":"Please check the flour.","branch_word":"flour","parent_id":"demo","case_id":"demo_a","speaker":"voice1"}
 ```
 
-模型转写示例：
+Prediction example:
 
 ```json
 {"example_id":"demo::C1::voice1","hypothesis":"Please check the flour."}
 ```
 
-- 语言：`zh`（中文）、`en`（英文）。
-- 条件：`C0`、`C1`、`U`、`C3`、`USER_ONLY`、`FULL_HISTORY`。
-- C3样本必须提供 `explicit_cue_depth`，取值为 `0`、`2` 或 `4`。
-- 空转写是合法输入，保留并正常计分。
+- Languages: `zh` (Chinese) and `en` (English).
+- Conditions: `C0`, `C1`, `U`, `C3`, `USER_ONLY`, and `FULL_HISTORY`.
+- C3 samples must provide `explicit_cue_depth`, with a value of `0`, `2`, or `4`.
+- Empty predictions are valid inputs and are retained for scoring.
 
-## 评测指标
+## Metrics
 
-- **CER/WER**：所有样本的编辑距离之和，除以规范化后参考文本的总计分单位数。
-  中文按汉字和拉丁词计分，英文按词计分。
-- **目标词召回率（Target Recall）**：模型转写中包含指定目标词的样本比例。
-  匹配要求目标词的规范化token序列连续出现。
-- **C3深度分组**：分别统计D0、D2和D4的上述指标。
+- **CER/WER**: total edit distance divided by the total number of normalized reference units. Chinese uses Chinese characters and Latin words; English uses words.
+- **Target Recall**: the proportion of samples whose prediction contains the specified target. The normalized target token sequence must occur contiguously.
+- **C3 depth groups**: the same metrics reported separately for D0, D2, and D4.
 
-Target Recall是存在性指标：转写同时包含目标与竞争词时，目标仍计命中，额外输出由CER/WER体现。它不是互斥候选选择准确率。
+Target Recall measures presence: if a prediction contains both the target and a competitor, the target still counts as a hit. CER/WER captures additional output. This is not mutually exclusive candidate-selection accuracy.
 
-论文中的C3整体结果读取 `groups.zh_C3` 和 `groups.en_C3`，不要平均 `c3_depth` 中的百分比。深度标签来自不同case，分组差异不是同一样本的位置消融。
+For aggregate C3 results in the paper, use `groups.zh_C3` and `groups.en_C3`, rather than averaging percentages in `c3_depth`. Depth labels belong to different cases; differences between these groups are not a within-sample position ablation.
 
-请使用与模型转写完全对应的数据版本。修订C3只改变上下文输入，不改变评分规则；ID相同不代表不同版本的转写可以混用。
+Use the dataset version corresponding to the predictions. Revised C3 changes the context input, not the scoring rules; matching IDs do not make predictions from different versions interchangeable.
 
-参考文本（REF）、模型转写（HYP）和目标词标签独立执行同一套对应语言的规范化规则：
+References (REF), predictions (HYP), and target labels independently undergo the same language-specific normalization:
 
-- 中文：原文含ASCII数字时先转为中文读法，再由本地实现进行字符与拉丁词切分。
-- 英文：先统一字母缩写形式，再使用随附的 Whisper EnglishTextNormalizer。
+- Chinese: if the original text contains ASCII digits, first convert them to Chinese readings, then apply the local character and Latin-word segmentation.
+- English: standardize initialisms, then apply Whisper `EnglishTextNormalizer` imported from Transformers 4.57.6.
 
-评测协议标识为 `hearincontext`。
-输出JSON中的 `error_rate` 和 `target_recall` 为比例值，乘以100后为百分比。
+The protocol identifier is `hearincontext`.
+The output JSON fields `error_rate` and `target_recall` are proportions; multiply by 100 for percentages.
 
-拼写规范化会合并 `busing` 和 `bussing`，因此这组词规范化后的命中不能作为词面消歧证据。
-字母缩写处理仍存在已知的词边界歧义；不会根据分数高低删除样本。
+Spelling normalization merges `busing` and `bussing`, so normalized hits for this pair are not evidence of lexical disambiguation. Initialism handling has known word-boundary ambiguities; samples are not removed based on their scores.
 
-## 运行测试
+## Tests
 
 ```bash
 python -m unittest discover -s tests
 ```
 
-## 配对置信区间
+## Paired Confidence Intervals
 
-统计入口与常规评分共用根目录依赖：
+The statistical entrypoint uses the same root requirements as regular scoring:
 
 ```bash
 python evaluation/bootstrap.py \
@@ -67,10 +66,10 @@ python evaluation/bootstrap.py \
   --output outputs/paired_ci.json
 ```
 
-两份转写必须覆盖同一manifest。按 `parent_id` 配对、有放回抽样，组内语义分支及音色一起保留；每次从总编辑数、参考单位数和目标命中数计算指标，不平均各组百分比。输出微调减基座的百分点差值和95% percentile置信区间：错误率差值负数更好，Recall差值正数更好。
+Both prediction files must cover the same manifest. Paired groups are sampled with replacement by `parent_id`, keeping their semantic branches and voices together. Each replicate computes metrics from total edits, reference units, and target hits, rather than averaging group percentages. Outputs report tuned-minus-base differences in percentage points and 95% percentile confidence intervals: negative error-rate differences and positive recall differences indicate improvement.
 
-这衡量给定checkpoint的样本不确定性，不代表重复训练种子的波动。
+These intervals measure sample uncertainty for the given checkpoints, not variability across training seeds.
 
-## 真实语音热词验证
+## Real-Speech Hotword Evaluation
 
-论文使用 SeACo 发布的 AISHELL-1-NE 808条测试清单及400词表。NE与ContextASR等多实体输入共用 `--mode entities`，复用主基准的规范化和编辑距离；只改变标注单位，不另起规范化规则。输入、计数约定和NE准备命令见 [多实体评测](entities.md)。这里不声称复刻SeACo官方R/P/F，也不直接比较其论文分数。
+The paper uses the AISHELL-1-NE test list of 808 utterances and the 400-word list released by SeACo. NE and other multi-entity inputs, including ContextASR, share `--mode entities`, reusing the main benchmark's normalization and edit distance. Only the annotation unit changes. See [multi-entity scoring](entities.md) for inputs, counting conventions, and NE preparation commands. This does not reproduce SeACo's official R/P/F or directly compare against its published scores.
