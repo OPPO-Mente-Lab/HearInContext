@@ -80,8 +80,6 @@ python -m unittest discover -s tests
 
 ## Citation
 
-**Corresponding author:** Hongbin Suo (suohongbin@oppo.com).
-
 ```bibtex
 @misc{gao2026hearincontext,
   title  = {HearInContext: A Benchmark for Implicit Context in Speech Recognition},
