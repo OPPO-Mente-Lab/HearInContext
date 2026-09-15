@@ -1,0 +1,19 @@
+HearInContext
+Copyright 2026 OPPO
+Licensed under Apache-2.0; see LICENSE.
+
+Qwen3-ASR
+Source: https://github.com/QwenLM/Qwen3-ASR
+Revision: 9567667698f195fa807b1581de5c03184e63d2b0
+Copyright: Alibaba Qwen; bundled files also retain vLLM, EleutherAI and Hugging Face notices.
+Files: qwen/vendor/Qwen3-ASR/
+License: Apache-2.0; see qwen/vendor/Qwen3-ASR/LICENSE.
+Modified files are marked for HearInContext.
+
+Whisper spelling mapping
+Source: https://huggingface.co/openai/whisper-large-v3/blob/main/normalizer.json
+Copyright: OpenAI
+Files: evaluation/resources/whisper_spelling.json
+License: Apache-2.0; see LICENSE.
+
+Original third-party copyright and license notices are retained.

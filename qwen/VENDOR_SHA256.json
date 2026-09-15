@@ -1,0 +1,20 @@
+{
+  "vendor/Qwen3-ASR/LICENSE": "a44a6081c73ad75f0255bb2bb5cab74ef1829565a895a24e53a4f11290ab7655",
+  "vendor/Qwen3-ASR/README.md": "5eb1e16a74e39b17cb8e411dc71cddbc8ac2779c194bb49825cb2101669bc8d2",
+  "vendor/Qwen3-ASR/finetuning/qwen3_asr_sft.py": "ed36f77e32cdb8321565b98572d674597cc21bd0cbbcfe4058add3a0d52a4fb5",
+  "vendor/Qwen3-ASR/pyproject.toml": "57489ba8746e347bcf530b52f057d670c5a89b66da6998212b025bcdd3748c85",
+  "vendor/Qwen3-ASR/qwen_asr/__init__.py": "26897071129fd175b1851cb3407be711f79b912efaefb9dc4a19fe3e88427e94",
+  "vendor/Qwen3-ASR/qwen_asr/__main__.py": "4a340eacab567a4c5ce672d38b9b8c695088947d7e2759299266076db8791c8d",
+  "vendor/Qwen3-ASR/qwen_asr/cli/demo.py": "e129ab41de33554091786b9bf3e6c18f8a65a17ff9eb738149b5f54354d881b8",
+  "vendor/Qwen3-ASR/qwen_asr/cli/demo_streaming.py": "5c92e769c8b4b5dd5b2a95ab2c218c1cf476ecff86ac48863d28d0a4c9f02fa3",
+  "vendor/Qwen3-ASR/qwen_asr/cli/serve.py": "d599a02e977b05d9bd625d539e39889060822c64cfd1c12b614ece62c3c42c80",
+  "vendor/Qwen3-ASR/qwen_asr/core/transformers_backend/__init__.py": "6de5cac018e0c994e04e855ef7fe9ed142383e88ffdcdf80463cbc7d5028b21d",
+  "vendor/Qwen3-ASR/qwen_asr/core/transformers_backend/configuration_qwen3_asr.py": "acf6c3f1cb3dc1ea0df621a11f7df6ccca109be73b6bf51508b5052942f5bec1",
+  "vendor/Qwen3-ASR/qwen_asr/core/transformers_backend/modeling_qwen3_asr.py": "2fb5d98da1933748f5117ee05ce4e7150c9ead8154fb8e25f7af3968b853adc7",
+  "vendor/Qwen3-ASR/qwen_asr/core/transformers_backend/processing_qwen3_asr.py": "a61f1fbfc06e3dfc63a2b8d15e3b29e98b032792c3fb7d0e01c04ca9c2181ffb",
+  "vendor/Qwen3-ASR/qwen_asr/core/vllm_backend/__init__.py": "45401be955b08e1135df6ec40f5c1dc05951b17868366f8d0bf0df06cf9e7720",
+  "vendor/Qwen3-ASR/qwen_asr/core/vllm_backend/qwen3_asr.py": "dad51cde09bef35fae5304ba1e5d4cc02a199845128d9bbb7717c4206584aa60",
+  "vendor/Qwen3-ASR/qwen_asr/inference/qwen3_asr.py": "c517f48f14574c6a73f5d514c9bbc15883a3cbf1d0c3e73870fe8ff6137927fc",
+  "vendor/Qwen3-ASR/qwen_asr/inference/qwen3_forced_aligner.py": "b031c0ccda9b171e42609907748ec7699e0763171cbc56720c25e5fc9cfb6db3",
+  "vendor/Qwen3-ASR/qwen_asr/inference/utils.py": "b37fb4140e6d9be85f2ecb1552ed16136eb98a57f44b402f8b0b213cb6df2a82"
+}

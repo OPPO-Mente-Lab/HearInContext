@@ -1,0 +1,6 @@
+regex==2023.8.8
+wetext==0.1.7
+kaldifst==1.7.17
+rapidfuzz==3.14.3
+numpy==1.26.4
+transformers==4.57.6
