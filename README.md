@@ -5,6 +5,7 @@
 ### A Benchmark for Implicit Context in Speech Recognition
 
 [![GitHub](https://img.shields.io/badge/GitHub-HearInContext-181717?logo=github&style=flat)](https://github.com/OPPO-Mente-Lab/HearInContext)
+[![arXiv](https://img.shields.io/badge/arXiv-2609.18680-b31b1b?style=flat)](https://arxiv.org/abs/2609.18680)
 [![Hugging Face Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-HearInContext-FFD21E?style=flat)](https://huggingface.co/datasets/OPPOer/HearInContext)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue?style=flat)](LICENSE)
 
